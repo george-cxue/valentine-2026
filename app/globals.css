@@ -1,26 +1,43 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Romantic Color Palette */
+  --valentine-cream: #FFF8F0;
+  --valentine-blush: #FFE4E6;
+  --valentine-pink: #FDA4AF;
+  --valentine-rose: #FB7185;
+  --valentine-red: #E11D48;
+  --valentine-deep: #9F1239;
+  --valentine-text: #4A0519;
+  --valentine-text-light: #881337;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
+  --color-cream: var(--valentine-cream);
+  --color-blush: var(--valentine-blush);
+  --color-pink: var(--valentine-pink);
+  --color-rose: var(--valentine-rose);
+  --color-red: var(--valentine-red);
+  --color-deep: var(--valentine-deep);
+  --color-text: var(--valentine-text);
+  --color-text-light: var(--valentine-text-light);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+body {
+  background: var(--valentine-cream);
+  color: var(--valentine-text);
+  font-family: var(--font-sans), Arial, Helvetica, sans-serif;
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom selection color */
+::selection {
+  background-color: var(--valentine-pink);
+  color: var(--valentine-deep);
 }
