@@ -15,10 +15,7 @@ type FloatingHeart = {
   delay: number;
 };
 
-// ============================================================
-// PHOTO COLLAGE DATA - Replace the placeholder paths with your actual image paths
-// Position values are percentages (0-100) for where each photo appears in the collage
-// ============================================================
+// PHOTO COLLAGE DATA
 const PHOTO_COLLAGE = [
   {
     id: 1,
@@ -31,10 +28,10 @@ const PHOTO_COLLAGE = [
   },
   {
     id: 2,
-    src: "/photos/snoopy.jpg",
+    src: "/photos/DSC02029.JPG",
     alt: "Memory 2",
-    top: 8,
-    left: 68,
+    top: 5,
+    left: 55,
     width: 28,
     rotate: 6,
   },
@@ -100,7 +97,7 @@ function CollagePhoto({
       transition={{ duration: 0.6, delay: index * 0.15 }}
       whileHover={{ scale: 1.05, zIndex: 10 }}
     >
-      <div className="aspect-square overflow-hidden rounded bg-gradient-to-br from-[var(--valentine-blush)] to-[var(--valentine-pink)]">
+      <div className="aspect-square overflow-hidden rounded bg-linear-to-br from-blush to-pink">
         {!imageError ? (
           // eslint-disable-next-line @next/next/no-img-element
           <img
@@ -110,7 +107,7 @@ function CollagePhoto({
             onError={() => setImageError(true)}
           />
         ) : (
-          <div className="flex h-full w-full flex-col items-center justify-center p-2 text-[var(--valentine-deep)]">
+          <div className="flex h-full w-full flex-col items-center justify-center p-2 text-deep">
             <Heart className="mb-1 h-8 w-8 opacity-40" />
             <span className="text-center text-[10px] opacity-60 leading-tight">
               {photo.src.split("/").pop()}
@@ -223,7 +220,7 @@ export default function ProposalPage() {
   }, [hasMovedNo, moveNoButton]);
 
   return (
-    <main className="relative h-screen w-screen overflow-hidden bg-[var(--valentine-cream)]">
+    <main className="relative h-screen w-screen overflow-hidden bg-cream">
       {/* Photo Collage Background */}
       <div className="absolute inset-0">
         {PHOTO_COLLAGE.map((photo, index) => (
@@ -236,7 +233,7 @@ export default function ProposalPage() {
         {floatingHearts.map((heart) => (
           <motion.div
             key={heart.id}
-            className="absolute text-[var(--valentine-pink)]"
+            className="absolute text-pink"
             initial={{
               x: `${heart.initialX}vw`,
               y: "110vh",
@@ -261,13 +258,13 @@ export default function ProposalPage() {
       </div>
 
       {/* Gradient overlay for text readability */}
-      <div className="absolute inset-0 bg-gradient-to-b from-[var(--valentine-cream)]/60 via-[var(--valentine-cream)]/80 to-[var(--valentine-cream)]/60" />
+      <div className="absolute inset-0 bg-linear-to-b from-(--valentine-cream)/60 via-(--valentine-cream)/80 to-(--valentine-cream)/60" />
 
       {/* Centered Content Overlay */}
       <div className="relative z-10 flex h-full flex-col items-center justify-center px-4">
         {/* Animated heart icon */}
         <motion.div
-          className="mb-6 inline-flex items-center gap-2 text-[var(--valentine-rose)]"
+          className="mb-6 inline-flex items-center gap-2 text-rose"
           animate={{ scale: [1, 1.1, 1] }}
           transition={{ duration: 2, repeat: Infinity }}
         >
@@ -278,7 +275,7 @@ export default function ProposalPage() {
 
         {/* The Question */}
         <motion.h1
-          className="mb-4 text-center font-serif text-4xl font-bold tracking-tight text-[var(--valentine-deep)] drop-shadow-sm md:text-5xl lg:text-6xl"
+          className="mb-4 text-center font-serif text-4xl font-bold tracking-tight text-deep drop-shadow-sm md:text-5xl lg:text-6xl"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.4 }}
@@ -287,7 +284,7 @@ export default function ProposalPage() {
         </motion.h1>
 
         <motion.p
-          className="mb-8 max-w-md text-center text-lg text-[var(--valentine-text-light)] md:text-xl"
+          className="mb-8 max-w-md text-center text-lg text-text-light md:text-xl"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.5 }}
@@ -305,7 +302,7 @@ export default function ProposalPage() {
           {/* Yes Button */}
           <motion.button
             onClick={handleYesClick}
-            className="rounded-full bg-gradient-to-r from-[var(--valentine-rose)] to-[var(--valentine-red)] px-10 py-4 text-xl font-semibold text-white shadow-lg transition-all hover:shadow-xl md:px-14 md:py-5 md:text-2xl"
+            className="rounded-full bg-linear-to-r from-rose to-red px-10 py-4 text-xl font-semibold text-white shadow-lg transition-all hover:shadow-xl md:px-14 md:py-5 md:text-2xl"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
@@ -320,7 +317,7 @@ export default function ProposalPage() {
             className={`rounded-full px-8 py-4 text-xl font-medium shadow-md md:px-10 md:py-5 ${
               hasMovedNo
                 ? "pointer-events-none invisible"
-                : "bg-[var(--valentine-blush)] text-[var(--valentine-text-light)] transition-colors hover:bg-[var(--valentine-pink)]"
+                : "bg-blush text-text-light transition-colors hover:bg-pink"
             }`}
             whileHover={!hasMovedNo ? { scale: 1.02 } : undefined}
           >
@@ -330,7 +327,7 @@ export default function ProposalPage() {
 
         {/* Subtle hint text */}
         <motion.p
-          className="mt-8 text-center text-sm text-[var(--valentine-rose)]"
+          className="mt-8 text-center text-sm text-rose"
           initial={{ opacity: 0 }}
           animate={{ opacity: 0.8 }}
           transition={{ delay: 2 }}
@@ -345,7 +342,7 @@ export default function ProposalPage() {
           ref={noButtonRef}
           onMouseEnter={moveNoButton}
           onTouchStart={moveNoButton}
-          className="fixed z-50 rounded-full bg-[var(--valentine-blush)] px-8 py-4 text-xl font-medium text-[var(--valentine-text-light)] shadow-md transition-colors hover:bg-[var(--valentine-pink)] md:px-10 md:py-5"
+          className="fixed z-50 rounded-full bg-blush px-8 py-4 text-xl font-medium text-text-light shadow-md transition-colors hover:bg-pink md:px-10 md:py-5"
           initial={{ opacity: 1 }}
           animate={{
             left: noButtonPosition.x,
