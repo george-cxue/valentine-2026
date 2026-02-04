@@ -20,17 +20,71 @@ type FloatingHeart = {
 // Position values are percentages (0-100) for where each photo appears in the collage
 // ============================================================
 const PHOTO_COLLAGE = [
-  { id: 1, src: "/photos/photo-1.jpg", alt: "Our memory 1", top: 5, left: 5, width: 30, rotate: -8 },
-  { id: 2, src: "/photos/photo-2.jpg", alt: "Our memory 2", top: 8, left: 68, width: 28, rotate: 6 },
-  { id: 3, src: "/photos/photo-3.jpg", alt: "Our memory 3", top: 55, left: 2, width: 25, rotate: 4 },
-  { id: 4, src: "/photos/photo-4.jpg", alt: "Our memory 4", top: 60, left: 72, width: 26, rotate: -5 },
-  { id: 5, src: "/photos/photo-5.jpg", alt: "Our memory 5", top: 25, left: 75, width: 22, rotate: 12 },
-  { id: 6, src: "/photos/photo-6.jpg", alt: "Our memory 6", top: 70, left: 35, width: 24, rotate: -3 },
+  {
+    id: 1,
+    src: "/photos/IMG_8340.PNG",
+    alt: "Memory 1",
+    top: 5,
+    left: 5,
+    width: 30,
+    rotate: -8,
+  },
+  {
+    id: 2,
+    src: "/photos/snoopy.jpg",
+    alt: "Memory 2",
+    top: 8,
+    left: 68,
+    width: 28,
+    rotate: 6,
+  },
+  {
+    id: 3,
+    src: "/photos/photo-4.png",
+    alt: "Memory 3",
+    top: 55,
+    left: 2,
+    width: 25,
+    rotate: 4,
+  },
+  {
+    id: 4,
+    src: "/photos/photo-3.png",
+    alt: "Memory 4",
+    top: 60,
+    left: 72,
+    width: 26,
+    rotate: -5,
+  },
+  {
+    id: 5,
+    src: "/photos/photo-5.png",
+    alt: "Memory 5",
+    top: 25,
+    left: 75,
+    width: 22,
+    rotate: 12,
+  },
+  {
+    id: 6,
+    src: "/photos/photo-6.png",
+    alt: "Memory 6",
+    top: 70,
+    left: 35,
+    width: 24,
+    rotate: -3,
+  },
 ];
 
 // Collage photo component
-function CollagePhoto({ photo, index }: { photo: (typeof PHOTO_COLLAGE)[0]; index: number }) {
-  const [imageError, setImageError] = useState(true);
+function CollagePhoto({
+  photo,
+  index,
+}: {
+  photo: (typeof PHOTO_COLLAGE)[0];
+  index: number;
+}) {
+  const [imageError, setImageError] = useState(false);
 
   return (
     <motion.div
@@ -82,7 +136,7 @@ function useFloatingHearts(): FloatingHeart[] {
           initialScale: 0.5 + Math.random() * 0.5,
           duration: 10 + Math.random() * 10,
           delay: Math.random() * 10,
-        }))
+        })),
       );
     });
   }, []);
