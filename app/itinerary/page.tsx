@@ -23,7 +23,7 @@ const ITINERARY_DATA = [
   {
     time: "1:00 PM",
     title: "Lunch",
-    description: "Who knows what we'll eat – I hope it's good though",
+    description: "Who knows what we'll eat but I hope it's good though",
     icon: "coffee",
   },
   // {
