@@ -21,39 +21,40 @@ import Link from "next/link";
 // ============================================================
 const ITINERARY_DATA = [
   {
-    time: "12:00 PM",
+    time: "1:00 PM",
     title: "Lunch",
-    description: "Who knows what George will chef up. I hope it's good though.",
+    description: "Who knows what we'll eat – I hope it's good though",
     icon: "coffee",
   },
+  // {
+  //   time: "1:00 PM",
+  //   title: "Activity #1",
+  //   description: "This is a mystery, but it will be fun, here is a hint:",
+  //   icon: "gift",
+  // },
   {
-    time: "1:00 PM",
-    title: "Activity #1",
-    description: "This is a mystery, but it will be fun, here is a hint:",
-    icon: "gift",
-  },
-  {
-    time: "3:00 PM",
+    time: "2:00 PM",
     title: "Dance",
-    description: "Live love our Pan Asian obligations.",
+    description: "Live Love Laugh to our Pan Asian obligations",
     icon: "music",
   },
   {
     time: "6:00 PM",
-    title: "Activity #2",
-    description: "Another mystery, another hint: hanging crafts.",
+    title: "Activity #1",
+    description:
+      "This is a mystery, but it will be fun, here is a hint: crafts",
     icon: "gift",
   },
   {
     time: "9:30 PM",
     title: "Yuhiro Sushi",
-    description: "Valentine's special omakase course.",
+    description: "Valentine's special omakase course",
     icon: "utensils",
   },
   {
     time: "11:39 PM",
     title: "just a tini bit older + galentini",
-    description: "Kat's celebration of growing older and galentines.",
+    description: "Kat's celebration of growing older and galentines",
     icon: "star",
   },
 ];
@@ -75,7 +76,7 @@ export default function ItineraryPage() {
     <main className="min-h-screen bg-cream">
       {/* Header Section */}
       <motion.section
-        className="relative overflow-hidden bg-linear-to-b px-4 py-16 text-center md:py-24"
+        className="relative overflow-hidden bg-linear-to-b px-4 pt-8 pb-4 text-center md:pt-12 md:pb-6"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.6 }}
@@ -109,7 +110,7 @@ export default function ItineraryPage() {
       </motion.section>
 
       {/* Timeline Section */}
-      <section className="container mx-auto px-4 py-12 md:py-16">
+      <section className="container mx-auto px-4 py-12 md:py-12">
         <div className="relative mx-auto max-w-2xl">
           {/* Vertical line */}
           <div className="absolute left-6 top-0 hidden h-full w-0.5 bg-linear-to-b from-pink via-rose to-red md:left-1/2 md:block md:-translate-x-1/2" />
@@ -180,7 +181,7 @@ export default function ItineraryPage() {
 
       {/* Footer */}
       <motion.footer
-        className="px-4 py-12 text-center"
+        className="px-4 pt-6 pb-12 text-center"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 0.8 }}
@@ -192,7 +193,7 @@ export default function ItineraryPage() {
           href="/"
           className="inline-block rounded-full bg-white px-6 py-3 text-sm font-medium text-text-light shadow-md transition-all hover:shadow-lg"
         >
-          ← Back to Proposal
+          ← back to home
         </Link>
       </motion.footer>
     </main>

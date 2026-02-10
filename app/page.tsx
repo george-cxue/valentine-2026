@@ -144,6 +144,7 @@ function useFloatingHearts(): FloatingHeart[] {
 export default function ProposalPage() {
   const router = useRouter();
   const [noButtonPosition, setNoButtonPosition] = useState({ x: 0, y: 0 });
+  const [noButtonOrigin, setNoButtonOrigin] = useState({ x: 50, y: 50 });
   const [hasMovedNo, setHasMovedNo] = useState(false);
   const noButtonRef = useRef<HTMLButtonElement>(null);
   const floatingHearts = useFloatingHearts();
@@ -196,6 +197,11 @@ export default function ProposalPage() {
     const button = noButtonRef.current;
     const buttonRect = button.getBoundingClientRect();
 
+    // Capture origin on first move so the fixed button can animate from there
+    if (!hasMovedNo) {
+      setNoButtonOrigin({ x: buttonRect.left, y: buttonRect.top });
+    }
+
     // Use entire viewport
     const maxX = window.innerWidth - buttonRect.width - 20;
     const maxY = window.innerHeight - buttonRect.height - 20;
@@ -206,7 +212,7 @@ export default function ProposalPage() {
 
     setNoButtonPosition({ x: newX, y: newY });
     setHasMovedNo(true);
-  }, []);
+  }, [hasMovedNo]);
 
   // Reset position on window resize if button has moved
   useEffect(() => {
@@ -289,7 +295,7 @@ export default function ProposalPage() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.5 }}
         >
-          You make every day feel like Valentine&apos;s Day.
+          you make every day feel like valentine&apos;s Day.
         </motion.p>
 
         {/* Horizontal Buttons - using fixed width container so Yes stays in place */}
@@ -306,7 +312,7 @@ export default function ProposalPage() {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
-            Yes!
+            YES!
           </motion.button>
 
           {/* No Button - Initial position (before it runs away) - invisible placeholder keeps Yes centered */}
@@ -321,18 +327,18 @@ export default function ProposalPage() {
             }`}
             whileHover={!hasMovedNo ? { scale: 1.02 } : undefined}
           >
-            No
+            no
           </motion.button>
         </motion.div>
 
         {/* Subtle hint text */}
         <motion.p
-          className="mt-8 text-center text-sm text-rose"
+          className="mt-4 text-center text-sm text-rose"
           initial={{ opacity: 0 }}
           animate={{ opacity: 0.8 }}
           transition={{ delay: 2 }}
         >
-          (There&apos;s really only one right answer here...)
+          (there&apos;s really only one right answer here...)
         </motion.p>
       </div>
 
@@ -343,7 +349,11 @@ export default function ProposalPage() {
           onMouseEnter={moveNoButton}
           onTouchStart={moveNoButton}
           className="fixed z-50 rounded-full bg-blush px-8 py-4 text-xl font-medium text-text-light shadow-md transition-colors hover:bg-pink md:px-10 md:py-5"
-          initial={{ opacity: 1 }}
+          initial={{
+            opacity: 1,
+            left: noButtonOrigin.x,
+            top: noButtonOrigin.y,
+          }}
           animate={{
             left: noButtonPosition.x,
             top: noButtonPosition.y,
@@ -354,7 +364,7 @@ export default function ProposalPage() {
             damping: 25,
           }}
         >
-          No
+          no
         </motion.button>
       )}
     </main>

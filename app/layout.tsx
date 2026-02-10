@@ -13,7 +13,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Be My Valentine?",
+  title: "be my valentine?",
   description: "A special question for a special someone",
 };
 
